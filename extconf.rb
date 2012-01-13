@@ -1,6 +1,3 @@
-=begin
-extconf.rb for Ruby/GtkMozEmbed extention library
-=end
 require 'rubygems'
 require 'mkmf-gnome2'
 gems_dir = File.expand_path(Gem.dir + "/gems/")
@@ -15,6 +12,7 @@ package_ids = ["webkit-1.0"]
     if /#{package}(-\d+\.\d+\.\d+)\z/ =~ entry
       version_suffix = $1
       $CFLAGS << ' ' + "-I #{gems_dir}/#{package}#{version_suffix}/lib"
+      $CFLAGS << ' ' + "-I #{gems_dir}/#{package}#{version_suffix}/ext/#{package}"
     end
   end
 end

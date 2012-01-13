@@ -1,71 +1,72 @@
-"cc -I. -I/usr/lib/ruby/1.8/x86_64-linux -I.    -fno-strict-aliasing -g -g -O2  -fPIC     -c conftest.c"
+"gcc -o conftest -I/usr/local/rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-linux -I/usr/local/rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/backward -I/usr/local/rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1 -I.     -O3 -ggdb -Wextra -Wno-unused-parameter -Wno-parentheses -Wpointer-arith -Wwrite-strings -Wno-missing-field-initializers -Wno-long-long  -fPIC conftest.c  -L. -L/usr/local/rvm/rubies/ruby-1.9.2-p0/lib -Wl,-R/usr/local/rvm/rubies/ruby-1.9.2-p0/lib -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/rvm/rubies/ruby-1.9.2-p0/lib -L/usr/local/rvm/rubies/ruby-1.9.2-p0/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 checked program was:
 /* begin */
-1: /*top*/
-2: #ifndef __GNUC__
-3: # error
-4: >>>>>> __GNUC__ undefined <<<<<<
-5: #endif
+1: #include "ruby.h"
+2: 
+3: int main() {return 0;}
+/* end */
+
+"gcc -I/usr/local/rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-linux -I/usr/local/rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/backward -I/usr/local/rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1 -I.     -O3 -ggdb -Wextra -Wno-unused-parameter -Wno-parentheses -Wpointer-arith -Wwrite-strings -Wno-missing-field-initializers -Wno-long-long  -fPIC   -c conftest.c"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: /*top*/
+4: #ifndef __GNUC__
+5: # error
+6: >>>>>> __GNUC__ undefined <<<<<<
+7: #endif
 /* end */
 
 have_func: checking for rb_define_alloc_func() in ruby.h... -------------------- yes
 
-"cc -o conftest -I. -I/usr/lib/ruby/1.8/x86_64-linux -I.    -I/usr/local/lib/site_ruby/1.8/x86_64-linux  -fno-strict-aliasing -g -g -O2  -fPIC   -Wall conftest.c  -L. -L/usr/lib -L. -Wl,-Bsymbolic-functions -rdynamic -Wl,-export-dynamic     -lruby1.8-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I/usr/local/rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-linux -I/usr/local/rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/backward -I/usr/local/rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1 -I. -I/usr/local/rvm/rubies/ruby-1.9.2-p0/lib/ruby/site_ruby/1.9.1/x86_64-linux  -I/usr/local/rvm/rubies/ruby-1.9.2-p0/lib/ruby/vendor_ruby/1.9.1/x86_64-linux      -O3 -ggdb -Wextra -Wno-unused-parameter -Wno-parentheses -Wpointer-arith -Wwrite-strings -Wno-missing-field-initializers -Wno-long-long  -fPIC -Wall conftest.c  -L. -L/usr/local/rvm/rubies/ruby-1.9.2-p0/lib -Wl,-R/usr/local/rvm/rubies/ruby-1.9.2-p0/lib -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/rvm/rubies/ruby-1.9.2-p0/lib -L/usr/local/rvm/rubies/ruby-1.9.2-p0/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 checked program was:
 /* begin */
-1: #include <ruby.h>
+1: #include "ruby.h"
 2: 
-3: /*top*/
-4: int main() { return 0; }
-5: int t() { void ((*volatile p)()); p = (void ((*)()))rb_define_alloc_func; return 0; }
+3: #include <ruby.h>
+4: 
+5: /*top*/
+6: int main() {return 0;}
+7: int t() { void ((*volatile p)()); p = (void ((*)()))rb_define_alloc_func; return 0; }
 /* end */
 
 --------------------
 
 have_func: checking for rb_block_proc() in ruby.h... -------------------- yes
 
-"cc -o conftest -I. -I/usr/lib/ruby/1.8/x86_64-linux -I.    -I/usr/local/lib/site_ruby/1.8/x86_64-linux  -fno-strict-aliasing -g -g -O2  -fPIC   -Wall conftest.c  -L. -L/usr/lib -L. -Wl,-Bsymbolic-functions -rdynamic -Wl,-export-dynamic     -lruby1.8-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I/usr/local/rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-linux -I/usr/local/rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/backward -I/usr/local/rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1 -I. -I/usr/local/rvm/rubies/ruby-1.9.2-p0/lib/ruby/site_ruby/1.9.1/x86_64-linux  -I/usr/local/rvm/rubies/ruby-1.9.2-p0/lib/ruby/vendor_ruby/1.9.1/x86_64-linux      -O3 -ggdb -Wextra -Wno-unused-parameter -Wno-parentheses -Wpointer-arith -Wwrite-strings -Wno-missing-field-initializers -Wno-long-long  -fPIC -Wall conftest.c  -L. -L/usr/local/rvm/rubies/ruby-1.9.2-p0/lib -Wl,-R/usr/local/rvm/rubies/ruby-1.9.2-p0/lib -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/rvm/rubies/ruby-1.9.2-p0/lib -L/usr/local/rvm/rubies/ruby-1.9.2-p0/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 checked program was:
 /* begin */
-1: #include <ruby.h>
+1: #include "ruby.h"
 2: 
-3: /*top*/
-4: int main() { return 0; }
-5: int t() { void ((*volatile p)()); p = (void ((*)()))rb_block_proc; return 0; }
+3: #include <ruby.h>
+4: 
+5: /*top*/
+6: int main() {return 0;}
+7: int t() { void ((*volatile p)()); p = (void ((*)()))rb_block_proc; return 0; }
 /* end */
 
 --------------------
 
-"cc -I. -I/usr/lib/ruby/1.8/x86_64-linux -I.    -I/usr/local/lib/site_ruby/1.8/x86_64-linux  -fno-strict-aliasing -g -g -O2  -fPIC   -Wall   -c conftest.c"
+"gcc -I/usr/local/rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-linux -I/usr/local/rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/backward -I/usr/local/rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1 -I. -I/usr/local/rvm/rubies/ruby-1.9.2-p0/lib/ruby/site_ruby/1.9.1/x86_64-linux  -I/usr/local/rvm/rubies/ruby-1.9.2-p0/lib/ruby/vendor_ruby/1.9.1/x86_64-linux      -O3 -ggdb -Wextra -Wno-unused-parameter -Wno-parentheses -Wpointer-arith -Wwrite-strings -Wno-missing-field-initializers -Wno-long-long  -fPIC -Wall   -c conftest.c"
+conftest.c:4:18: fatal error: node.h: No such file or directory
+compilation terminated.
 checked program was:
 /* begin */
 1: #include "ruby.h"
-2: #include "node.h"
-3: int node_attrasgn = (int)NODE_ATTRASGN;
+2: 
+3: #include "ruby.h"
+4: #include "node.h"
+5: int node_attrasgn = (int)NODE_ATTRASGN;
 /* end */
 
-"cc -I. -I/usr/lib/ruby/1.8/x86_64-linux -I.    -I/usr/local/lib/site_ruby/1.8/x86_64-linux  -fno-strict-aliasing -g -g -O2  -fPIC   -Wall -D_REENTRANT -I/usr/include/gtk-2.0 -I/usr/lib/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/directfb -I/usr/include/libpng12 -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include   -D_REENTRANT -I/usr/include/webkit-1.0 -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/gtk-2.0 -I/usr/include/libsoup-2.4 -I/usr/lib/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/directfb -I/usr/include/libpng12 -I/usr/include/libxml2     -c conftest.c"
-conftest.c:4:3: error: #error 
-conftest.c:5: error: expected identifier or ‘(’ before ‘>>’ token
-checked program was:
-/* begin */
-1: #include <glibconfig.h>
-2: /*top*/
-3: #ifndef G_PLATFORM_WIN32
-4: # error
-5: >>>>>> G_PLATFORM_WIN32 undefined <<<<<<
-6: #endif
-/* end */
+have_package: checking for gtk+-2.0... -------------------- yes
 
-have_library: checking for main() in -lwebkit-1.0... -------------------- yes
+--------------------
 
-"cc -o conftest -I. -I/usr/lib/ruby/1.8/x86_64-linux -I.    -I/usr/local/lib/site_ruby/1.8/x86_64-linux  -fno-strict-aliasing -g -g -O2  -fPIC   -Wall -D_REENTRANT -I/usr/include/gtk-2.0 -I/usr/lib/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/directfb -I/usr/include/libpng12 -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include   -D_REENTRANT -I/usr/include/webkit-1.0 -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/gtk-2.0 -I/usr/include/libsoup-2.4 -I/usr/lib/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/directfb -I/usr/include/libpng12 -I/usr/include/libxml2   conftest.c  -L. -L/usr/lib -L. -Wl,-Bsymbolic-functions -rdynamic -Wl,-export-dynamic       -lgtk-x11-2.0 -lgdk-x11-2.0 -latk-1.0 -lpangoft2-1.0 -lgdk_pixbuf-2.0 -lm -lpangocairo-1.0 -lgio-2.0 -lcairo -lpango-1.0 -lfreetype -lfontconfig -lgobject-2.0 -lgmodule-2.0 -lglib-2.0   -lwebkit-1.0 -lgtk-x11-2.0 -lsoup-2.4 -lgdk-x11-2.0 -latk-1.0 -lpangoft2-1.0 -lgdk_pixbuf-2.0 -lm -lpangocairo-1.0 -lcairo -lpango-1.0 -lfreetype -lfontconfig -lgio-2.0 -lgobject-2.0 -lgmodule-2.0 -lglib-2.0   -lruby1.8-static -lwebkit-1.0  -lgtk-x11-2.0 -lgdk-x11-2.0 -latk-1.0 -lpangoft2-1.0 -lgdk_pixbuf-2.0 -lm -lpangocairo-1.0 -lgio-2.0 -lcairo -lpango-1.0 -lfreetype -lfontconfig -lgobject-2.0 -lgmodule-2.0 -lglib-2.0   -lwebkit-1.0 -lgtk-x11-2.0 -lsoup-2.4 -lgdk-x11-2.0 -latk-1.0 -lpangoft2-1.0 -lgdk_pixbuf-2.0 -lm -lpangocairo-1.0 -lcairo -lpango-1.0 -lfreetype -lfontconfig -lgio-2.0 -lgobject-2.0 -lgmodule-2.0 -lglib-2.0   -lpthread -lrt -ldl -lcrypt -lm   -lc"
-checked program was:
-/* begin */
-1: /*top*/
-2: int main() { return 0; }
-3: int t() { void ((*volatile p)()); p = (void ((*)()))main; return 0; }
-/* end */
+have_package: checking for webkit-1.0... -------------------- yes
 
 --------------------
 
